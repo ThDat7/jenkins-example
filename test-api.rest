@@ -1,0 +1,7 @@
+GET http://localhost:8081/
+
+POST http://localhost:8081/create
+
+GET http://localhost:8081/users
+
+DELETE http://localhost:8081/delete
