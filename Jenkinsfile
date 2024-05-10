@@ -56,7 +56,7 @@ pipeline {
                "docker container stop rubik2k3-jenkins_demo || echo 'this container does not exist'\n"+
                "docker network create dev || echo 'this network exists'\n"+
                "echo y | docker container prune \n"+
-               "docker container run -d --rm --name rubik2k3-jenkins_demo -p 8081:8080 --network dev rubik2k3/jenkins_demo\n"
+               "docker container run -d --rm --name rubik2k3-jenkins_demo -p 8080:8080 --network dev rubik2k3/jenkins_demo\n"
 
                sshagent(['ec2']) {
                    sh """
