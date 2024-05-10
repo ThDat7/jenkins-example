@@ -37,7 +37,7 @@ pipeline {
                "docker container stop jenkins_example-mysql || echo 'this container does not exist'\n"+ 
                "echo y | docker container prune\n"+
                "docker volume rm jenkins_example-mysql-data || echo 'no volume'\n"+
-               "docker run --name jenkins_example-mysql --rm --network dev -v jenkins_example-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_LOGIN_PSW} -e MYSQL_DATABASE=jenkins_example  -d mysql:8.0\n"+
+               "docker run --name jenkins_example-mysql --rm --network dev -v jenkins_example-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=jenkins_example  -d mysql:8.0\n"+
                "sleep 20"
                sshagent(['ec2']) {
                    sh """
@@ -56,7 +56,7 @@ pipeline {
                "docker container stop rubik2k3-jenkins_demo || echo 'this container does not exist'\n"+
                "docker network create dev || echo 'this network exists'\n"+
                "echo y | docker container prune \n"+
-               "docker container run -d --rm --name rubik2k3-jenkins_demo -p 8080:8080 --network dev rubik2k3/jenkins_demo\n"
+               "docker container run -d --rm --name rubik2k3-jenkins_demo -p 8081:8080 --network dev rubik2k3/jenkins_demo\n"
 
                sshagent(['ec2']) {
                    sh """
