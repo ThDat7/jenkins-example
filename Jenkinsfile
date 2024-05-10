@@ -32,7 +32,6 @@ pipeline {
             steps {
              script {
                def deployingScript = "#!/bin/bash\n"+
-               "sudo -i\n"+
                "docker image pull mysql:8.0\n"+
                "docker network create dev || echo 'this network exists'\n"+
                "docker container stop jenkins_example-mysql || echo 'this container does not exist'\n"+ 
@@ -42,7 +41,7 @@ pipeline {
                "sleep 20"
                sshagent(['ec2']) {
                    sh """
-                   ssh -o StrictHostKeyChecking=no ubuntu@ec2-184-72-179-221.compute-1.amazonaws.com "echo \\\"${deployingScript}\\\" > deploy.sh && chmod +x deploy.sh && ./deploy.sh"
+                   ssh -o StrictHostKeyChecking=no ubuntu@ec2-184-72-179-221.compute-1.amazonaws.com "echo \\\"${deployingScript}\\\" > deploy.sh && chmod +x deploy.sh && sudo ./deploy.sh"
                    """
                }
               }
@@ -53,7 +52,6 @@ pipeline {
             steps {
              script {
                def deployingScript = "#!/bin/bash\n"+
-               "sudo -i\n"+
                "docker image pull rubik2k3/jenkins_demo\n"+
                "docker container stop rubik2k3-jenkins_demo || echo 'this container does not exist'\n"+
                "docker network create dev || echo 'this network exists'\n"+
@@ -62,7 +60,7 @@ pipeline {
 
                sshagent(['ec2']) {
                    sh """
-                   ssh -o StrictHostKeyChecking=no ubuntu@ec2-184-72-179-221.compute-1.amazonaws.com "echo \\\"${deployingScript}\\\" > deploy.sh && chmod +x deploy.sh && ./deploy.sh"
+                   ssh -o StrictHostKeyChecking=no ubuntu@ec2-184-72-179-221.compute-1.amazonaws.com "echo \\\"${deployingScript}\\\" > deploy.sh && chmod +x deploy.sh && sudo ./deploy.sh"
                    """
                }
               }
