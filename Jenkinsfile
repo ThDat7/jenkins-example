@@ -21,9 +21,11 @@ pipeline {
         stage('Packaging/Pushing imagae') {
 
             steps {
-                docker.build('rubik2k3/jenkins_demo')
-                withDockerRegistry(url: 'https://index.docker.io/v1/', credentialsId: 'dockerhub') {
-                    docker.image('rubik2k3/jenkins_demo').push('latest')
+                script {
+                    docker.build('rubik2k3/jenkins_demo')
+                    docker.withRegistry(url: 'https://index.docker.io/v1/', credentialsId: 'dockerhub') {
+                        docker.image('rubik2k3/jenkins_demo').push('latest')
+                    }
                 }
                 
                 // withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
