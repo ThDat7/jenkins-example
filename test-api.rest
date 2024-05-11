@@ -1,7 +1,9 @@
-GET http://localhost:8081/
+@host = http://54.227.104.197:80
 
-POST http://localhost:8081/create
+GET {{host}}/
 
-GET http://localhost:8081/users
+POST {{host}}/create
 
-DELETE http://localhost:8081/delete
+GET {{host}}/users
+
+DELETE {{host}}/delete
