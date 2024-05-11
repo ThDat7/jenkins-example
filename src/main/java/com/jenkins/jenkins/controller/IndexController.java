@@ -20,8 +20,8 @@ public class IndexController {
     private UserRepository repository;
     @GetMapping
     public String index() {
-        // return "Jenkins Ci/CD";
-        return "Hello World!";
+        return "Jenkins Ci/CD";
+        // return "Hello World!";
     }
 
     @PostMapping("/create")
