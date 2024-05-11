@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         MYSQL_ROOT_LOGIN = credentials('mysql')
-        DOCKER_HUB = 'rubi2k3'
+        DOCKER_HUB = 'rubik2k3'
         MYSQL_CONTAINER_NAME = 'jenkins_example-mysql'
         DATABASE_NAME = 'jenkins_example'
         BACKEND_IMAGE = 'jenkins_demo'
