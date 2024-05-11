@@ -11,7 +11,7 @@ pipeline {
         MYSQL_CONTAINER_NAME = 'jenkins_example-mysql'
         DATABASE_NAME = 'jenkins_example'
         BACKEND_IMAGE = 'jenkins_demo'
-        EC2_HOST = 'ec2-184-72-179-221.compute-1.amazonaws.com'
+        EC2_HOST = 'ec2-54-227-104-197.compute-1.amazonaws.com'
     }
 
     stages {
